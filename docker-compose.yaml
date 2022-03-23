@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ecommerce-db:
+    platform: linux/x86_64
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user-test'
+      MYSQL_PASSWORD: 'user-test-password'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ecommerce-db:/var/lib/mysql
+
+  ecommerce-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ecommerce
+    depends_on:
+      - ecommerce-db
+    container_name: ecommerce
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/home/node/src
+      - node_modules:/home/node/src/node_modules
+    command: npm run srv:prod
+
+volumes:
+  ecommerce-db:
+  node_modules:
