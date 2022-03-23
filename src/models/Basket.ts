@@ -1,8 +1,9 @@
-import { DataTypes, Model } from "sequelize";
-import { sequelizeClient } from "../index";
+import { DataTypes, Model, Sequelize } from "sequelize";
 
 export class Basket extends Model {}
 
-Basket.init({
-  products: DataTypes.ARRAY(DataTypes.UUID)
-}, { sequelize: sequelizeClient, modelName: 'basket' });
+export const createBasketModel = (client: Sequelize) => {
+  Basket.init({
+    products: DataTypes.ARRAY(DataTypes.UUID)
+  }, { sequelize: client, modelName: 'basket' });
+}

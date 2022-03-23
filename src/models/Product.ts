@@ -1,8 +1,9 @@
-import { DataTypes, Model } from "sequelize";
-import { sequelizeClient } from "../index";
+import { DataTypes, Model, Sequelize } from "sequelize";
 
 export class Product extends Model {}
 
-Product.init({
-  name: DataTypes.STRING
-}, { sequelize: sequelizeClient, modelName: 'product' });
+export const createProductModel = (client: Sequelize) => {
+  Product.init({
+    name: DataTypes.STRING
+  }, { sequelize: client, modelName: 'product' });
+}

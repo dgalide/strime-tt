@@ -4,14 +4,21 @@ import cors from 'cors';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from "body-parser";
-import { Product } from './models/Product';
-import { User } from './models/User';
+import { Product, createProductModel } from './models/Product';
+import { createUserModel, User } from './models/User';
+import { createBasketModel } from "./models/Basket";
+import { createOrderModel } from "./models/Order";
 
 export const sequelizeClient = new Sequelize('db', 'user-test', 'user-test-password', {
     host: "localhost",
     port: 3306,
     dialect: 'mysql'
 });
+
+createProductModel(sequelizeClient);
+createBasketModel(sequelizeClient);
+createUserModel(sequelizeClient);
+createOrderModel(sequelizeClient);
 
 const app = express();
 
@@ -95,5 +102,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example ecommerce listening on port ${port}`)
 })
