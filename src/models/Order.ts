@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelizeClient } from "..";
 
-class Order extends Model {}
+export class Order extends Model {}
 
 Order.init({
   products: DataTypes.ARRAY(DataTypes.UUID),

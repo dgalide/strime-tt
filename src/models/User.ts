@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelizeClient } from '../index'
 
-class User extends Model {}
+export class User extends Model {}
 
 User.init({
   username: DataTypes.STRING,
