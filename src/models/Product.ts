@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelizeClient } from "..";
+import { sequelizeClient } from "../index";
 
 export class Product extends Model {}
 

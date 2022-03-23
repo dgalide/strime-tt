@@ -85,15 +85,6 @@ app.post('/register', async (req, res) => {
     });
 });
 
-// (async () => {
-//     await sequelize.sync();
-//     const jane = await User.create({
-//       username: 'janedoe',
-//       birthday: new Date(1980, 6, 20)
-//     });
-//     console.log(jane.toJSON());
-//   })();
-
 app.put('/basket', (req, res) => {
     res.send(200);
 });
