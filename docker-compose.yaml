@@ -14,21 +14,21 @@ services:
     volumes:
       - ecommerce-db:/var/lib/mysql
 
-  # ecommerce-api:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   image: ecommerce
-  #   depends_on:
-  #     - ecommerce-db
-  #   container_name: ecommerce
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - .:/home/node/src
-  #     - node_modules:/home/node/src/node_modules
-  #   command: npm run srv:prod
+  ecommerce-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ecommerce
+    depends_on:
+      - ecommerce-db
+    container_name: ecommerce
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/src
+      - node_modules:/home/node/src/node_modules
+    command: npm run srv:prod
 
 volumes:
   ecommerce-db:
-  # node_modules:
+  node_modules:
